@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from firstapp.models import People
+from firstapp.models import People, Article
 from django.template import Context, Template
 
 # Create your views here.
@@ -24,3 +24,10 @@ def home(request):
     c = Context({'person':person})
     web_page = t.render(c)
     return HttpResponse(web_page)
+
+def index(request):
+    context = {}
+    article_all = Article.objects.all()
+    context['article_all'] = article_all
+    index_page = render(request, 'index.html', context)
+    return index_page

@@ -4,3 +4,12 @@ from django.db import models
 class People(models.Model):
     name = models.CharField(null=True, blank=True, max_length=200)
     job = models.CharField(null=True, blank=True, max_length=200)
+    def __str__(self):
+        return self.name
+
+class Article(models.Model):
+    headline = models.CharField(null=True, blank=True, max_length=300)
+    content = models.TextField(null=True, blank=True)
+    tag = models.CharField(null=True, blank=True, max_length=50)
+    def __str__(self):
+        return self.headline
